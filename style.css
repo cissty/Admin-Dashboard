@@ -12,6 +12,7 @@
   body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    font-size: 20px;
   }
   img, picture, video, canvas, svg {
     display: block;
@@ -28,11 +29,9 @@
     cursor: pointer;
     fill: white;  
   }
-  svg:hover, img:hover{
-    scale: 1.1;
-  }
-  button:hover{
-    scale: 1.05;
+  
+  button:active{
+    scale: 1.03;
   }
   ul{
     padding: 0;
@@ -40,7 +39,6 @@
 
    ul li {
     list-style: none;
-    cursor: pointer;
    }
 
    ul li::after{
@@ -70,6 +68,12 @@
     color: #fff;
     cursor: pointer;
   }
+
+  hr{
+    height: 6px;
+    background-color: red;
+    border-radius: 50%;
+  }
   
   :root{
     --bg-bolder-color: #64748b;
@@ -82,15 +86,16 @@
   .container{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: repeat(7, 1fr);
     min-height: 100vh;
     font-family: var(--font-roboto);
 
   }
 
+ 
+
 .header{
     grid-column: 2;
-    grid-row: 1 / 2;
+    grid-row: 1 / 1;
     background-color: white;
     margin-right: 2rem;
     margin-left: 2rem;
@@ -108,9 +113,15 @@
     fill: var(--bg-bolder-color);
     width: 30px;
   }
+  .header-svg:hover{
+    scale: 1.1;
+  }
   .header-bell{
     fill: rgba(44, 40, 40, 0.815);
     width: 30px;
+  }
+  .header-bell:hover{
+    scale: 1.1;
   }
  
   .search-bar{
@@ -160,14 +171,18 @@
     .ul-list > div{
       margin-left: 12px;
     }
+    .list-items > div:hover, .ul-list > div:hover{
+      scale: 1.02;
+      cursor: pointer;
+    }
 
-    @media all and (max-width: 1024px){
+    @media all and (max-width: 768){
       
       .ul-list > div{
         margin-left: 0px;
         padding-right: 10px;
       }
-      
+
      }
     ul > div, .ul-list > div {
     display: flex;
@@ -197,6 +212,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(425px, 1fr));
   gap: 20px;
+  text-align: center;
 }
 .project{
   box-shadow: 0 6px 6px hsl(0deg 0% 0% / 0.3);
@@ -205,11 +221,13 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+  border-left: 10px solid rgb(119, 119, 119);
 }
 .project:hover{
-  scale: 1.02;
-  cursor: pointer;
+  scale: 1.03;
+  box-shadow: 4.0px 8.0px 10.0px hsl(0deg 0% 0% / 0.38);
 }
 
 .project-icons{
@@ -218,10 +236,37 @@
   align-self: end;
 }
 
-.project-icons > svg{
+.project-icons  svg{
   fill: #64748b;
 }
+.project-icons  svg:hover{
+  fill: red;
+  scale: 1.1;
+}
+.github:hover{
+  transform: rotate(360deg);
+}
 
+.github {
+  transition: transform 0.4s;
+}
+
+.project img{
+  width: 400px;
+  height: 500px;
+  object-fit: contain;
+  scale: 1;
+}
+
+.project  p{
+  font-size: 2rem;
+  color: rgba(2, 0, 8, 0.904);
+}
+
+.project.last{
+  grid-column: span 2;
+  height: 700px;
+}
 
 /* MAIN CONTENT COLUMN 2 */
 .announcements{
@@ -231,25 +276,34 @@
   border-radius: 16px;
   background-color: #fff;
   margin-left: 20px;
-}
+  padding-bottom: 20px;
 
- .trending{
-  margin-left: 10px;
-  padding-left: 10px;
 }
 
 .announcements-column{
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding-left: 3rem;
   padding-right: 16px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  
 }
 
+.site-maintenance{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.green-status{
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  object-fit: contain;
+}
 
+.trending{
+  margin-left: 10px;
+  padding-left: 10px;
+}
 
 
 .trending-column{
@@ -277,7 +331,12 @@
   color: #757575;
 }
 
+
 ._user{
   cursor: pointer;
   font-weight: bold;
+}
+._cissty{
+  color: var(--bg-bolder-color);
+  cursor: pointer;
 }
